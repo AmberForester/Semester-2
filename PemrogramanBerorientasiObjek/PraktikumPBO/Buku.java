@@ -94,6 +94,7 @@ class RunBuku{
             daftarBuku[i].cetakDaftarBuku2();
             daftarBuku[i].hitungKata();
             System.out.println();
+            
         }
     } 
 }
