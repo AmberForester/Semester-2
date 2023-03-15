@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Buku {
     public String kategori;
-    public int jumlahBuku;
     public String judulBuku;
     public String namaPenulis;
     public String[] listNamaPenulis;
@@ -94,7 +93,7 @@ class RunBuku{
             daftarBuku[i].cetakDaftarBuku2();
             daftarBuku[i].hitungKata();
             System.out.println();
-            
+
         }
     } 
 }
