@@ -1,4 +1,4 @@
-package PemrogramanBeorientasiObyek.Praktikum;
+package PemrogramanBerorientasiObjek.PraktikumPBO;
 import java.util.*;
 
 public class KartuRencanaStudi{

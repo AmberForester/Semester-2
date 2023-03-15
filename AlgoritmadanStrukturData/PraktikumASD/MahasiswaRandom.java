@@ -14,6 +14,7 @@ public class MahasiswaRandom {
         System.out.print(this.jurusan + ", ");
         System.out.print(this.univ);
     }
+}
 class Solution {
 
     public static void main(String[] args) {
@@ -23,9 +24,9 @@ class Solution {
         String m = sc.nextLine();
         String[] splitM = m.split(" ");
                   
-        KTM[] mhs = new KTM[n];
+        MahasiswaRandom[] mhs = new MahasiswaRandom[n];
         for(int i = 0; i < n; i++){
-            mhs[i] = new KTM(sc.next(), sc.next(), sc.next(), sc.next());
+            mhs[i] = new MahasiswaRandom(sc.next(), sc.next(), sc.next(), sc.next());
         }
         for(String data : splitM){
             int index = Integer.parseInt(data);
@@ -34,3 +35,4 @@ class Solution {
         }      
     }
 }
+
