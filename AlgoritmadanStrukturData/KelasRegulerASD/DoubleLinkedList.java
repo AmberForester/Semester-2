@@ -16,6 +16,19 @@ public class DoubleLinkedList {
             kepala.prev = nodeBaru;
             kepala = nodeBaru;
         }
+        size++;
+    }
+
+    public void addLast(NodeDouble nodeBaru){
+        if(size == 0){
+            kepala = ekor = nodeBaru;
+        }
+        else{
+            ekor.next = nodeBaru;
+            nodeBaru.prev = ekor;
+            ekor = nodeBaru;
+        }
+        size++;
     }
 
     public void addAfter(int key, NodeDouble nodeBaru){
@@ -43,7 +56,20 @@ public class DoubleLinkedList {
     }
 
     public void deleteFirst(){
-        kepala.next.prev = null;
-        kepala = kepala.next;
+        if(size == 0){
+            System.out.println("");
+        }
+        else{
+            if(size ==1){
+                kepala = ekor = null;
+            }
+            else{
+                kepala.next.prev = null;
+                kepala = kepala.next;
+                kepala.prev.next = null;
+            }         
+        }       
     }
+
+    
 }
