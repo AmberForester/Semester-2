@@ -1,23 +1,23 @@
 import java.util.Scanner;
 
-class NodeDLL {
-    NodeDLL next;
-    NodeDLL prev;
+class NodeDLL2 {
+    NodeDLL2 next;
+    NodeDLL2 prev;
     String data;
 
-    NodeDLL() {
+    NodeDLL2() {
     }
 
-    NodeDLL(String newData) {
+    NodeDLL2(String newData) {
         this.next = next;
         this.prev = prev;
         this.data = newData;
     }
 }
 
-class DLL {
-    NodeDLL kepala;
-    NodeDLL ekor;
+class DLL2 {
+    NodeDLL2 kepala;
+    NodeDLL2 ekor;
     int size;
 
     boolean isEmpty() {
@@ -29,7 +29,7 @@ class DLL {
     }
 
     void addFirst(String newData) {
-        NodeDLL nodeBaru = new NodeDLL(newData);
+        NodeDLL2 nodeBaru = new NodeDLL2(newData);
         if(isEmpty()){
             kepala = ekor = nodeBaru;
         }
@@ -42,7 +42,7 @@ class DLL {
     }
 
     void addLast(String newData) {
-        NodeDLL nodeBaru = new NodeDLL(newData);
+        NodeDLL2 nodeBaru = new NodeDLL2(newData);
         if(isEmpty()){
             kepala = ekor = nodeBaru;
         }
@@ -85,8 +85,8 @@ class DLL {
     }
 
     void addAtIndex(int targetIndex, String newData) {
-        NodeDLL nodeBaru = new NodeDLL(newData);
-        NodeDLL temp = kepala;
+        NodeDLL2 nodeBaru = new NodeDLL2(newData);
+        NodeDLL2 temp = kepala;
         if(isEmpty()){
             System.out.println("List masih kosong.");
         }
@@ -117,7 +117,7 @@ class DLL {
     }
 
     void removeTarget(String targetData) {
-        NodeDLL temp = kepala;        
+        NodeDLL2 temp = kepala;        
         while(temp != null && !temp.data.equalsIgnoreCase(targetData)){
             temp = temp.next;
         }
@@ -143,7 +143,7 @@ class DLL {
     }
 
     void printForward() {
-       NodeDLL temp = new NodeDLL();
+       NodeDLL2 temp = new NodeDLL2();
         temp = kepala;
         if(isEmpty()){
             System.out.println("List masih kosong.");
@@ -158,7 +158,7 @@ class DLL {
     }
 
     void printBackward() {
-        NodeDLL temp = new NodeDLL();
+        NodeDLL2 temp = new NodeDLL2();
         temp = ekor;
         if(isEmpty()){
             System.out.println("List masih kosong.");
@@ -177,7 +177,7 @@ public class SalahKetik {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        DLL dll = new DLL();
+        DLL2 dll = new DLL2();
 
         int n = sc.nextInt();
         sc.nextLine();

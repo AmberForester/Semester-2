@@ -1,6 +1,6 @@
 public class LinkedList {
-    Node kepala;
-    Node ekor;
+    NodeSingle kepala;
+    NodeSingle ekor;
     int size;
 
     public LinkedList(){
@@ -9,13 +9,13 @@ public class LinkedList {
     }
 
     public void add(int nilai){
-        Node temp = new Node();
+        NodeSingle temp = new NodeSingle();
         temp.data = nilai;
         size++;
         addLast(temp);
     }
 
-    public void addFirst(Node nodeBaru){
+    public void addFirst(NodeSingle nodeBaru){
         if (kepala == null){
             kepala = nodeBaru;
             ekor = nodeBaru;
@@ -26,7 +26,7 @@ public class LinkedList {
         size++;
     }
 
-    public void addLast (Node nodeBaru){
+    public void addLast (NodeSingle nodeBaru){
         if (kepala == null){
             kepala = nodeBaru;
             ekor = nodeBaru;
@@ -38,8 +38,8 @@ public class LinkedList {
         size++;
     }
 
-    public void addAfter(int key, Node nodeBaru){
-        Node temp = kepala;
+    public void addAfter(int key, NodeSingle nodeBaru){
+        NodeSingle temp = kepala;
         while (temp != null){
             if (key == temp.data){
                 nodeBaru.pointer = temp.pointer;
@@ -53,7 +53,7 @@ public class LinkedList {
     }
 
     public int get(int index){
-        Node temp = kepala;
+        NodeSingle temp = kepala;
         if (index<size){
             for (int i = 0; i < index; i++) {
                 temp = temp.pointer;
@@ -67,7 +67,7 @@ public class LinkedList {
     }
 
     public void print() {
-        Node temp = kepala;
+        NodeSingle temp = kepala;
         while (temp != null) {
             System.out.print(temp.data + " -> ");
             temp = temp.pointer;
@@ -84,7 +84,7 @@ public class LinkedList {
 
     public void deleteLast(){
         if (kepala != null){
-            Node temp = kepala;
+            NodeSingle temp = kepala;
             while(temp.pointer!=ekor){
                 temp = temp.pointer;
             }

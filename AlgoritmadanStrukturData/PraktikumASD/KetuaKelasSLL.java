@@ -1,22 +1,22 @@
 import java.io.*;
 import java.util.*;
 
-class Node {
+class Node2 {
     String data;
-    Node next;
+    Node2 next;
 
-    public Node(){
+    public Node2(){
         next = null;
     }
-    public Node(String namaInput) {
+    public Node2(String namaInput) {
         this.data = namaInput;
         this.next = null;
     }
 }
  
 class SLL {
-    Node kepala;
-    Node ekor;
+    Node2 kepala;
+    Node2 ekor;
     int size;
     
     SLL(){
@@ -33,7 +33,7 @@ class SLL {
     }
   
     void addLast(String command) { //addFirst("Hiro")
-        Node nodeBaru = new Node(command);
+        Node2 nodeBaru = new Node2(command);
         if(isEmpty()){
             kepala = ekor = nodeBaru;            
         }
@@ -45,7 +45,7 @@ class SLL {
     }
  
     void addFirst(String command) {
-        Node nodeBaru = new Node(command);
+        Node2 nodeBaru = new Node2(command);
         if(isEmpty()){
             kepala = ekor = nodeBaru;    
         }
@@ -61,7 +61,7 @@ class SLL {
             System.out.println("List masih kosong.");
         }
         else{
-            Node current = kepala;
+            Node2 current = kepala;
             while(current != null){
                 System.out.print(current.data + " -> ");
                 current = current.next;
@@ -83,7 +83,7 @@ class SLL {
     }
   
     void removeLast() {
-        Node current = new Node();
+        Node2 current = new Node2();
         current = kepala;
         if(isEmpty()){
             System.out.println("List masih kosong.");           
