@@ -36,7 +36,7 @@ public class Looping {
         // sec = sec % 60;
 
         // System.out.println(hour + " : " + minutes + " : " + sec);
-        for(int i = 44; i < 100; i++){
+        for(int i = 44; i < 450; i++){
             System.out.println(i);
         }
 
