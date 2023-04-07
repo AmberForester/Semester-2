@@ -1,6 +1,6 @@
 package quiz1;
 
-public class Queue {
+class Queue {
     Node depan;
     Node belakang;
     int size;

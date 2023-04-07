@@ -1,4 +1,4 @@
-public class LinkedList {
+class LinkedList {
     NodeSingle kepala;
     NodeSingle ekor;
     int size;

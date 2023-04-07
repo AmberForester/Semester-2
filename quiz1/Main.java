@@ -6,7 +6,7 @@ NIM   : 225150201111018
 Kelas : TIF-C
 */
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         int[][] graf = {
     //       0 1 2 3 4 5 6 7 

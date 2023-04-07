@@ -1,16 +1,19 @@
 package PemrogramanBerorientasiObjek.PraktikumPBO;
+import java.text.DecimalFormat;
 
 abstract class CivitasAkademik {
     private String nama;
     private String prodi;
     private String fakultas;
     private String alamat;
+    DecimalFormat rp = new DecimalFormat("Rp ###,###.00");
 
     public CivitasAkademik(){}
-    public CivitasAkademik(String nama, String prodi, String fakultas) {
+    public CivitasAkademik(String nama, String alamat, String prodi, String fakultas) {
         this.nama = nama;
         this.prodi = prodi;
         this.fakultas = fakultas;
+        this.alamat = alamat;
     }
 
     public abstract void tampilkanData();
@@ -60,9 +63,10 @@ class Mahasiswa extends CivitasAkademik{
         this.ukt = ukt;
     }
 
-    public Mahasiswa(String nim, String nama, String prodi, String fakultas){
-        super(nama, prodi, fakultas);
+    public Mahasiswa(String nim, String nama, String alamat, String prodi, String fakultas, String ukt){
+        super(nama, alamat, prodi, fakultas);
         this.nim = nim;
+        this.ukt = ukt;
     }
     
     public void tampilkanData(){
@@ -71,7 +75,8 @@ class Mahasiswa extends CivitasAkademik{
         System.out.printf("%-10s: %s\n","Fakultas", getFakultas());
         System.out.printf("%-10s: %s\n","Alamat", getAlamat());
         System.out.printf("%-10s: %s\n","NIM", nim);
-        System.out.printf("%-10s: %s\n","UKT", ukt);
+        System.out.printf("%-10s: %s\n","UKT", rp.format(Integer.parseInt(ukt)));
+        System.out.println();
     }
 
     public void setNim(String nim) {
@@ -102,13 +107,13 @@ class Dosen extends CivitasAkademik{
         this.gaji = gaji;
     }
 
-    public Dosen(String nidn, String nama, String prodi, String fakultas) {
-        super(nama, prodi, fakultas);
+    public Dosen(String nidn, String nama, String alamat, String prodi, String fakultas) {
+        super(nama, alamat, prodi, fakultas);
         this.nidn = nidn;
     }
 
-    public Dosen(String nama, String prodi, String fakultas, String nidn, String gaji) {
-        super(nama, prodi, fakultas);
+    public Dosen(String nama, String alamat, String prodi, String fakultas, String nidn, String gaji) {
+        super(nama, alamat, prodi, fakultas);
         this.nidn = nidn;
         this.gaji = gaji;
     }
@@ -119,7 +124,8 @@ class Dosen extends CivitasAkademik{
         System.out.printf("%-10s: %s\n","Fakultas", getFakultas());
         System.out.printf("%-10s: %s\n","Alamat", getAlamat());
         System.out.printf("%-10s: %s\n","NIDN", nidn);
-        System.out.printf("%-10s: %s\n","Gaji", gaji);
+        System.out.printf("%-10s: %s\n","Gaji", rp.format(Integer.parseInt(gaji)));
+        System.out.println();
     }
 
     public void setNidn(String nidn) {
@@ -141,9 +147,10 @@ class Dosen extends CivitasAkademik{
 
 class KRS{
     private Mahasiswa mhs;
-    private MataKuliah[] matkul = new MataKuliah[12];
+    private MataKuliah[] matkul = new MataKuliah[100];
     int totalSKS;
     int jumlahMatkul;
+    DecimalFormat rp = new DecimalFormat("Rp ###,###.00");
 
     public KRS(){};
 
@@ -152,9 +159,7 @@ class KRS{
     }
 
     void tambahMatkul(MataKuliah matkulBaru){
-        System.out.println(totalSKS);
-        totalSKS += matkulBaru.getSks();
-        
+        totalSKS += matkulBaru.getSks(); 
         if(totalSKS <= 24){
             matkul[jumlahMatkul] = matkulBaru;
             jumlahMatkul++;  
@@ -167,13 +172,13 @@ class KRS{
         System.out.printf("%-10s: %s\n","Fakultas", mhs.getFakultas());
         System.out.printf("%-10s: %s\n","Alamat", mhs.getAlamat());
         System.out.printf("%-10s: %s\n","NIM", mhs.getNim());
-        System.out.printf("%-10s: %s\n","UKT", mhs.getUkt());
+        System.out.printf("%-10s: %s\n","UKT", rp.format(Integer.parseInt(mhs.getUkt())));
         System.out.println();
         for (int i = 0; i < jumlahMatkul; i++) {
             System.out.printf("%-20s: %s\n","Nama Mata Kuliah", matkul[i].getNamaMatkul());
             System.out.printf("%-20s: %s\n","Kode Mata Kuliah", matkul[i].getKodeMatkul());
             System.out.printf("%-20s: %s\n","Dosen Pengampu", matkul[i].getDsn().getNama());
-            System.out.printf("%-20s: %s\n","jumlah SKS", matkul[i].getSks());
+            System.out.printf("%-20s: %s\n\n","jumlah SKS", matkul[i].getSks());
         }
         if(totalSKS > 24){
             System.out.println();
@@ -248,33 +253,126 @@ class MataKuliah{
 
 class Run{
     public static void main(String[] args) {
-        // CivitasAkademik mhs1 = new Mahasiswa();
+        Dosen d1 = new Dosen("Paijo","Tidar","TIF", "FILKOM","123", "10000000");
+        Dosen d2 = new Dosen("Paino","Blimbing","TIF","FILKOM","234", "15000000");
+        Dosen d3 = new Dosen("Paimin", "lowokwaru", "TIF", "FILKOM", "345", "12000000");
+        Dosen d4 = new Dosen("Painem", "Klojen", "TIF", "FILKOM", "456", "18000000");
+        d1.tampilkanData();
+        d2.tampilkanData();
+        d3.tampilkanData();
+        d4.tampilkanData();
+
+        KRS krs1 = new KRS();
+        MataKuliah m1 = new MataKuliah("CIF62002","SISOP",4,d1);
+        MataKuliah m2 = new MataKuliah("CIF62004","ASD",4,d1);
+        MataKuliah m3 = new MataKuliah("CIF62006","STP",3,d2);
+        MataKuliah m4 = new MataKuliah("CIF62003","PBO",5,d2);
+        MataKuliah m5 = new MataKuliah("CIF62005", "AL", 10, d3);
+        
+        Mahasiswa mhs1 = new Mahasiswa("225150201111018","Hironemus Apriliano D. P", "Surakarta","TIF","FILKOM", "9500000");
+        Mahasiswa mhs2 = new Mahasiswa("225150201111016","Daffarel Adyatma","Rembang","TIF", "FILKOM", "7500000"); 
+        Mahasiswa mhs3 = new Mahasiswa("225150201111015","Moch. Gustav Ali","Nganjuk","TIF", "FILKOM", "8500000");
+        mhs1.tampilkanData();
+        mhs2.tampilkanData();
+        mhs3.tampilkanData();
+    }
+}
+
+// CivitasAkademik mhs1 = new Mahasiswa();
         // mhs1.tampilkanData();
         // System.out.println();
         // CivitasAkademik dsn1 = new Dosen();
         // dsn1.tampilkanData();
 
-        Dosen d1 = new Dosen("123","Paijo","TIF","FILKOM");
-        Dosen d2 = new Dosen("124","Paino","TIF","FILKOM");
-        Dosen d3 = new Dosen("125", "Paimin", "TIF", "FILKOM");
-        d1.tampilkanData();
-        d2.tampilkanData();
-        d3.tampilkanData();
-        KRS krs1 = new KRS();
-        KRS krs2 = new KRS();
-        MataKuliah m1 = new MataKuliah("CIF62002","SISOP",4,d1);
-        MataKuliah m2 = new MataKuliah("CIF62004","ASD",4,d1);
-        MataKuliah m3 = new MataKuliah("CIF62006","STP",3,d2);
-        MataKuliah m4 = new MataKuliah("CIF62003","PBO",5,d2);
-        // MataKuliah m5 = new MataKuliah("CIF62005", "AL", 2, d3);
-        krs1.setMhs(new Mahasiswa("225150201111018","Hironemus Apriliano D. P","TIF","FILKOM"));
-        krs2.setMhs(new Mahasiswa("225150201111016","Daffarel Adyatma", "TIF", "FILKOM"));
-        
-        krs1.tambahMatkul(m1);
-        krs1.tambahMatkul(m2);
-        krs1.tambahMatkul(m3);
-        krs1.tambahMatkul(m4);
+        // d1.tampilkanData();
+        // d2.tampilkanData();
+        // d3.tampilkanData();
+        // d4.tampilkanData();
+
+        // mhs1.tampilkanData();
+        // mhs2.tampilkanData();
+        // mhs3.tampilkanData();
+
+        // MataKuliah m5 = new MataKuliah("CIF62005", "AL", 10, d3);
         // krs1.tambahMatkul(m5);
-        krs1.tampilKRS();
-    }
-}
+        
+        // class Run{
+        //     public static void main(String[] args) {
+        //         Dosen d1 = new Dosen("Paijo","Tidar","TIF", "FILKOM","123", "10000000");
+        //         Dosen d2 = new Dosen("Paino","Blimbing","TIF","FILKOM","234", "15000000");
+        //         Dosen d3 = new Dosen("Paimin", "lowokwaru", "TIF", "FILKOM", "345", "12000000");
+        //         Dosen d4 = new Dosen("Painem", "Klojen", "TIF", "FILKOM", "456", "18000000");
+        
+        //         KRS krs1 = new KRS();
+        //         MataKuliah m1 = new MataKuliah("CIF62002","SISOP",4,d1);
+        //         MataKuliah m2 = new MataKuliah("CIF62004","ASD",4,d1);
+        //         MataKuliah m3 = new MataKuliah("CIF62006","STP",3,d2);
+        //         MataKuliah m4 = new MataKuliah("CIF62003","PBO",5,d2);
+                
+        //         Mahasiswa mhs1 = new Mahasiswa("225150201111018","Hironemus Apriliano D. P", "Surakarta","TIF","FILKOM", "9500000");
+        //         Mahasiswa mhs2 = new Mahasiswa("225150201111016","Daffarel Adyatma","Rembang","TIF", "FILKOM", "7500000"); 
+        //         Mahasiswa mhs3 = new Mahasiswa("225150201111015","Moch. Gustav Ali","Nganjuk","TIF", "FILKOM", "8500000");
+                
+        //         krs1.setMhs(mhs1);
+        //         krs1.tambahMatkul(m1);
+        //         krs1.tambahMatkul(m2);
+        //         krs1.tambahMatkul(m3);
+        //         krs1.tambahMatkul(m4);
+        //         krs1.tampilKRS();    
+        //     }
+        // }
+        
+        // class Run{
+        //     public static void main(String[] args) {
+        //         Dosen d1 = new Dosen("Paijo","Tidar","TIF", "FILKOM","123", "10000000");
+        //         Dosen d2 = new Dosen("Paino","Blimbing","TIF","FILKOM","234", "15000000");
+        //         Dosen d3 = new Dosen("Paimin", "lowokwaru", "TIF", "FILKOM", "345", "12000000");
+        //         Dosen d4 = new Dosen("Painem", "Klojen", "TIF", "FILKOM", "456", "18000000");
+        
+        //         KRS krs1 = new KRS();
+        //         MataKuliah m1 = new MataKuliah("CIF62002","SISOP",4,d1);
+        //         MataKuliah m2 = new MataKuliah("CIF62004","ASD",4,d1);
+        //         MataKuliah m3 = new MataKuliah("CIF62006","STP",3,d2);
+        //         MataKuliah m4 = new MataKuliah("CIF62003","PBO",5,d2);
+        //         MataKuliah m5 = new MataKuliah("CIF62005", "AL", 10, d3);
+                
+        //         Mahasiswa mhs1 = new Mahasiswa("225150201111018","Hironemus Apriliano D. P", "Surakarta","TIF","FILKOM", "9500000");
+        //         Mahasiswa mhs2 = new Mahasiswa("225150201111016","Daffarel Adyatma","Rembang","TIF", "FILKOM", "7500000"); 
+        //         Mahasiswa mhs3 = new Mahasiswa("225150201111015","Moch. Gustav Ali","Nganjuk","TIF", "FILKOM", "8500000");
+                
+        //         krs1.setMhs(mhs1);
+        //         krs1.tambahMatkul(m1);
+        //         krs1.tambahMatkul(m2);
+        //         krs1.tambahMatkul(m3);
+        //         krs1.tambahMatkul(m4);
+        //         krs1.tambahMatkul(m5);
+        //         krs1.tampilKRS();    
+        //     }
+        // }
+
+        // class Run{
+        //     public static void main(String[] args) {
+        //         Dosen d1 = new Dosen("Paijo","Tidar","TIF", "FILKOM","123", "10000000");
+        //         Dosen d2 = new Dosen("Paino","Blimbing","TIF","FILKOM","234", "15000000");
+        //         Dosen d3 = new Dosen("Paimin", "lowokwaru", "TIF", "FILKOM", "345", "12000000");
+        //         Dosen d4 = new Dosen("Painem", "Klojen", "TIF", "FILKOM", "456", "18000000");
+        //         d1.tampilkanData();
+        //         d2.tampilkanData();
+        //         d3.tampilkanData();
+        //         d4.tampilkanData();
+        
+        //         KRS krs1 = new KRS();
+        //         MataKuliah m1 = new MataKuliah("CIF62002","SISOP",4,d1);
+        //         MataKuliah m2 = new MataKuliah("CIF62004","ASD",4,d1);
+        //         MataKuliah m3 = new MataKuliah("CIF62006","STP",3,d2);
+        //         MataKuliah m4 = new MataKuliah("CIF62003","PBO",5,d2);
+        //         MataKuliah m5 = new MataKuliah("CIF62005", "AL", 10, d3);
+                
+        //         Mahasiswa mhs1 = new Mahasiswa("225150201111018","Hironemus Apriliano D. P", "Surakarta","TIF","FILKOM", "9500000");
+        //         Mahasiswa mhs2 = new Mahasiswa("225150201111016","Daffarel Adyatma","Rembang","TIF", "FILKOM", "7500000"); 
+        //         Mahasiswa mhs3 = new Mahasiswa("225150201111015","Moch. Gustav Ali","Nganjuk","TIF", "FILKOM", "8500000");
+        //         mhs1.tampilkanData();
+        //         mhs2.tampilkanData();
+        //         mhs3.tampilkanData();
+        //     }
+        // }

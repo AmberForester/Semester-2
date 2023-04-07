@@ -1,6 +1,6 @@
 package quiz1;
 
-public class Node {
+class Node {
     int data;
     Node pointer;
 
