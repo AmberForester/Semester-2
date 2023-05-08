@@ -1,7 +1,7 @@
 package PemrogramanBerorientasiObjek.PraktikumPBO;
 
 import java.util.Scanner;
-public class Perpustakaan {
+public class Perpustakaan1 {
     public String kategori;
     public int jumlahBuku;
     public String[] judulBuku;
@@ -38,9 +38,9 @@ class RunPerpustakaan{
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int jumlahKategori = input.nextInt();
-        Perpustakaan daftarPengisi[] = new Perpustakaan[jumlahKategori];
+        Perpustakaan1 daftarPengisi[] = new Perpustakaan1[jumlahKategori];
         for(int i = 0; i < jumlahKategori; i++){
-            Perpustakaan pengisi = new Perpustakaan();
+            Perpustakaan1 pengisi = new Perpustakaan1();
             pengisi.tambahBuku();
             daftarPengisi[i] = pengisi;
             }

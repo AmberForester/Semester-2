@@ -2,7 +2,7 @@ package PemrogramanBerorientasiObjek.PraktikumPBO;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class Buku {
+public class Buku1 {
     public String kategori;
     public String judulBuku;
     public String namaPenulis;
@@ -13,9 +13,9 @@ public class Buku {
     public double persenRoyalti;
     public DecimalFormat rupiah = new DecimalFormat("Rp ###,###.00");
 
-    public Buku(){}
+    public Buku1(){}
 
-    public Buku(String kategori, String judulBuku, String namaPenulis, String sinopsis, int harga, int terjualPerBulan, double persenRoyalti){
+    public Buku1(String kategori, String judulBuku, String namaPenulis, String sinopsis, int harga, int terjualPerBulan, double persenRoyalti){
         this.kategori = kategori;
         this.judulBuku = judulBuku;
         this.namaPenulis = namaPenulis;
@@ -74,7 +74,7 @@ class RunBuku{
 
         Scanner sc = new Scanner(System.in);      
         int jumlahBuku = sc.nextInt(); sc.nextLine();                       
-        Buku daftarBuku[] = new Buku[jumlahBuku];
+        Buku1 daftarBuku[] = new Buku1[jumlahBuku];
 
         for(int i = 0; i < jumlahBuku; i++){
             String kategori = sc.nextLine();
@@ -85,7 +85,7 @@ class RunBuku{
             int terjualPerBulan = sc.nextInt(); sc.nextLine();
             int persenRoyalti = sc.nextInt(); sc.nextLine();
 
-            Buku inputBuku = new Buku(kategori, judulBuku, namaPenulis, sinopsis, harga, terjualPerBulan, persenRoyalti);
+            Buku1 inputBuku = new Buku1(kategori, judulBuku, namaPenulis, sinopsis, harga, terjualPerBulan, persenRoyalti);
             inputBuku.sinopsisKapital();
             daftarBuku[i] = inputBuku;
         }
