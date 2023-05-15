@@ -1,3 +1,4 @@
+package AlgoritmadanStrukturData.PraktikumASD;
 import java.util.Scanner;
 class NodeJaved {
     String data;
