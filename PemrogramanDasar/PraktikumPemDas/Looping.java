@@ -2,7 +2,9 @@ package PemrogramanDasar.PraktikumPemDas;
 import java.util.Scanner;
 public class Looping {
     public static void main (String []args) {
-
+        for(int i = 170; i <= 235; i++){
+            System.out.println(i);
+        }
 
 
 /*
@@ -36,9 +38,7 @@ public class Looping {
         // sec = sec % 60;
 
         // System.out.println(hour + " : " + minutes + " : " + sec);
-        for(int i = 44; i < 300; i++){
-            System.out.println(i);
-        }
+        
 
 
 
