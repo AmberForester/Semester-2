@@ -1,0 +1,8 @@
+package UapPbo2023;
+
+public class UAP {
+    public static void main(String[] args) {
+        Data.mulai();
+        Data.info();
+    }
+}

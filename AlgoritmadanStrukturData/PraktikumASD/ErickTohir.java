@@ -1,4 +1,4 @@
-package AlgoritmadanStrukturData.PraktikumASD;
+package PraktikumASD;
 import java.util.Scanner;
 public class ErickTohir {
     public static void main(String[] args) {

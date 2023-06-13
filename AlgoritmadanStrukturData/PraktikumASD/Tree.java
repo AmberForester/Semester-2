@@ -1,3 +1,4 @@
+
 // class NodeTree<T>{
 //     NodeTree<T> kiri;
 //     NodeTree<T> kanan;

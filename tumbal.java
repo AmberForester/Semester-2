@@ -1,5 +1,7 @@
 
 import java.util.Scanner;
+
+import AlgoritmadanStrukturData.LinkedList.LinkedList;
 public class tumbal {}
 
 class Node {
